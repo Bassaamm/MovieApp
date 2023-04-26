@@ -5,7 +5,7 @@ export const Header = () => {
   const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("darkMode"))
+    JSON.parse(localStorage.getItem("darkMode")) & true
   );
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
