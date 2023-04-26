@@ -33,11 +33,11 @@ export const Header = () => {
           <Link to="/" className="flex items-center">
             <img
               src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8 mr-3"
+              className="h-12 mr-3"
               alt="Flowbite Logo"
             />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              :)
+            <span className="self-center text-xl font-semibold whitespace-nowrap  dark:text-white">
+              Hmmmm?
             </span>
           </Link>
           <div id="mobile-dev" className="flex md:order-2 gap-2">
@@ -52,7 +52,7 @@ export const Header = () => {
                 <svg
                   aria-hidden="true"
                   data-toggle-icon="sun"
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@ export const Header = () => {
                 <svg
                   aria-hidden="true"
                   data-toggle-icon="moon"
-                  className="w-4 h-4"
+                  className="w-5 h-5"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -82,10 +82,14 @@ export const Header = () => {
               data-collapse-toggle="navbar-search"
               aria-controls="navbar-search"
               aria-expanded="false"
-              className="md:hidden text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 mr-1"
+              className={
+                hidden
+                  ? "md:hidden text-gray-500 dark:text-gray-400  rounded-lg text-sm p-1.5 mr-1"
+                  : "md:hidden text-gray-500 dark:text-gray-400 dark:bg-gray-700   border dark:border-gray-600 rounded-lg text-sm p-1.5 mr-1"
+              }
             >
               <svg
-                className="w-5 h-5"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -102,7 +106,7 @@ export const Header = () => {
             <div id="nav-dev" className="relative hidden md:block">
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
-                  className="w-5 h-5 text-gray-500"
+                  className="w-6 h-6 text-gray-500"
                   aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -127,29 +131,6 @@ export const Header = () => {
                 />
               </form>
             </div>
-            <button
-              onClick={() => setHidden(!hidden)}
-              data-collapse-toggle="navbar-search"
-              type="button"
-              className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-              aria-controls="navbar-search"
-              aria-expanded="false"
-            >
-              <span className="sr-only">Open menu</span>
-              <svg
-                className="w-6 h-6"
-                aria-hidden="true"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-            </button>
           </div>
           <div
             className={`items-center justify-between ${

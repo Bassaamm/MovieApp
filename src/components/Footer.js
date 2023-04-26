@@ -7,15 +7,15 @@ export const Footer = () => {
         <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
           <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             © 2023{" "}
-            <Link to="https://flowbite.com/" className="hover:underline">
-              Flowbite™
+            <Link to="https://twitter.com/Znkve" className="hover:underline">
+              Me™
             </Link>
             . All Rights Reserved.
           </span>
           <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
             <li>
               <Link
-                href="#"
+                to="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                 target="_blank"
                 className="mr-4 hover:underline md:mr-6 "
               >
@@ -24,7 +24,7 @@ export const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                to="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                 target="_blank"
                 className="mr-4 hover:underline md:mr-6"
               >
@@ -33,7 +33,7 @@ export const Footer = () => {
             </li>
             <li>
               <Link
-                href="#"
+                to="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
                 target="_blank"
                 className="mr-4 hover:underline md:mr-6"
               >
@@ -41,7 +41,11 @@ export const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link href="#" target="_blank" className="hover:underline">
+              <Link
+                to="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
+                target="_blank"
+                className="hover:underline"
+              >
                 Contact
               </Link>
             </li>
