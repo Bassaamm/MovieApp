@@ -5,7 +5,7 @@ export const Header = () => {
   const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
   const [darkMode, setDarkMode] = useState(
-    JSON.parse(localStorage.getItem("darkMode")) || true
+    JSON.parse(localStorage.getItem("darkMode")) & true
   );
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
@@ -31,7 +31,7 @@ export const Header = () => {
       <nav className="bg-white border-gray-200 dark:bg-gray-900">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <Link to="/" className="flex items-center">
-            <img
+          <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="h-12 mr-3"
               alt="Flowbite Logo"
