@@ -4,7 +4,7 @@ import { AllRoutes } from "./routes/Allroutes";
 import { ScrollToTop } from "./components/ScrollToTop";
 function App() {
   return (
-    <div className="App">
+    <div className="App relative">
       <ScrollToTop />
       <Header />
       <AllRoutes />
