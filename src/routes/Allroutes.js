@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { MovieInfo, MovieList, PageNotFound, Search , MohPage } from "../pages";
+import { MovieInfo, MovieList, PageNotFound, Search } from "../pages";
 
 export const AllRoutes = () => {
   return (
@@ -10,8 +10,6 @@ export const AllRoutes = () => {
           element={<MovieList api="movie/now_playing" title="Home" />}
         />
         <Route path="/movie/:id" element={<MovieInfo />} />
-        <Route path="/movie/mohsen" element={<MohPage />} />
-
         <Route
           path="/movies/popular"
           element={<MovieList api="movie/popular" title="Popular" />}
