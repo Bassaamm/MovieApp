@@ -1,6 +1,6 @@
 # Movie App
 
-## Link ---> `[Here](Basssam.me)` .
+## Link ---> [Here](Basssam.me) .
 
 ## What is it ?
 
