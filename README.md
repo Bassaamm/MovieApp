@@ -1,6 +1,6 @@
 # Movie App
 
-Website link of the project [Soon!](https://www.basssam.me).
+Website link of the project [](https://www.basssam.me).
 
 ## What is it ?
 
