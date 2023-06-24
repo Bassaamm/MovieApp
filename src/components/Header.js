@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 export const Header = () => {
   const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
+  const [searchField, setSeatchField] = useState("");
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) & true
   );
@@ -14,6 +15,12 @@ export const Header = () => {
       : document.documentElement.classList.remove("dark");
   }, [darkMode]);
 
+  const handleChangeInput = (search) => {
+    setSeatchField(() => search.target.value);
+    const split = searchField.split(" ");
+    const join = split.join("%20");
+    return navigate(`search?q=${join}`);
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
     const field = event.target.search.value;
@@ -122,6 +129,7 @@ export const Header = () => {
               </div>
               <form onSubmit={handleSubmit}>
                 <input
+                  onChange={handleChangeInput}
                   type="text"
                   id="search-navbar"
                   name="search"
