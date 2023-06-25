@@ -1,13 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const [hidden, setHidden] = useState(true);
   const navigate = useNavigate();
-  const [searchField, setSeatchField] = useState("");
   const [darkMode, setDarkMode] = useState(
     JSON.parse(localStorage.getItem("darkMode")) & true
   );
+  const ref = useRef("");
   useEffect(() => {
     localStorage.setItem("darkMode", JSON.stringify(darkMode));
     darkMode
@@ -16,8 +16,8 @@ export const Header = () => {
   }, [darkMode]);
 
   const handleChangeInput = (search) => {
-    setSeatchField(() => search.target.value);
-    const split = searchField.split(" ");
+    const spl = (ref.current = search.target.value);
+    const split = spl.split(" ");
     const join = split.join("%20");
     return navigate(`search?q=${join}`);
   };
