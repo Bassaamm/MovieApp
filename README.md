@@ -16,4 +16,4 @@ A small movie website where you can `search` and `watch the details` about movie
 ### Runing the project
 
     $ npm run start
-https://github.com/Bassaamm/MovieApp/blob/main/public/logo192.png
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
