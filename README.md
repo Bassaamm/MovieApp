@@ -16,4 +16,4 @@ A small movie website where you can `search` and `watch the details` about movie
 ### Runing the project
 
     $ npm run start
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg)
