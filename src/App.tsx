@@ -7,6 +7,7 @@ import AppLayout from "./AppLayout";
 import { Api } from "./enums/Api";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "react-query";
+import BookmarkList from "./features/BookmarkList";
 
 const queryClinet = new QueryClient({
   defaultOptions: {
@@ -53,6 +54,10 @@ function App() {
                 element={
                   <MoviesList api={Api.UpComingMovies} title="Upcoming" />
                 }
+              />
+              <Route
+                path="/bookmark"
+                element={<BookmarkList title={"bookmark"} />}
               />
               <Route path="*" element={<PageNotFound />} />
             </Route>
