@@ -1,5 +1,4 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import MoviesList from "./features/MoviesList";
 import PageNotFound from "./components/PageNotFound";
 import Search from "./features/Search";
 import MoviesInfo from "./features/MoviesInfo";
@@ -35,34 +34,15 @@ function App() {
             />
           </Helmet>
           <Routes>
-            <Route element={<AppLayout />}>
-              <Route index element={<Navigate replace to="/home" />} />
-              <Route
-                path="/home"
-                element={<MoviesList api={Api.AvaliableNow} title="Home" />}
-              />
-              <Route
-                path="/popular"
-                element={<MoviesList api={Api.Popular} title="Popular" />}
-              />
-              <Route
-                path="/top-rated"
-                element={<MoviesList api={Api.TopRated} title="Top rated" />}
-              />
-              <Route
-                path="/upcoming"
-                element={
-                  <MoviesList api={Api.UpComingMovies} title="Upcoming" />
-                }
-              />
-              <Route
-                path="/bookmark"
-                element={<BookmarkList title="bookmark" />}
-              />
-              <Route path="*" element={<PageNotFound />} />
-            </Route>
+            <Route path="/" element={<Navigate replace to="/home" />} />
+            <Route path="/:api" element={<AppLayout />} />
+            <Route
+              path="/bookmark"
+              element={<BookmarkList title="bookmark" />}
+            />
             <Route path="/movie/:id" element={<MoviesInfo />} />
             <Route path="search" element={<Search api={Api.SearchMovie} />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

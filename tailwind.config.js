@@ -2,7 +2,10 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: { fontFamily: { sans: ["Kanit", "sans-serif"] } },
+    extend: {
+      fontFamily: { sans: ["Kanit", "sans-serif"] },
+      filter: ["hover", "focus"],
+    },
   },
   plugins: [],
 };

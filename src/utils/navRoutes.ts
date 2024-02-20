@@ -3,7 +3,7 @@ export type NavRoutesProps = {
   path: string;
 };
 export const navRoutes: NavRoutesProps[] = [
-  { name: "Now Playing", path: "/" },
+  { name: "Now Playing", path: "/home" },
   { name: "Top Rated", path: "/top-rated" },
   { name: "Popluar", path: "/popular" },
   { name: "Coming Soon", path: "/upcoming" },

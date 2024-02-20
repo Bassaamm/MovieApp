@@ -8,7 +8,7 @@ export default function Image({ movie }: { movie: Movie }) {
     <img
       src={src}
       alt={movie.original_title}
-      className="h-20 w-20 rounded-3xl  object-cover"
+      className="h-92 w-72 rounded-3xl  object-cover md:h-[512px] md:w-[340px]"
     />
   );
 }

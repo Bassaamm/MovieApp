@@ -1,51 +1,54 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useMovieList } from "./useMovieList";
+import { Swiper, SwiperRef } from "swiper/react";
 import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Movie } from "../types/MovieType";
-import Image from "../components/Image";
-import { Suspense } from "react";
+import { useEffect, useRef } from "react";
 import { FaBeer } from "react-icons/fa";
 
-export default function MoviesList({ api }: { api: string; title: string }) {
-  const { data, isLoading, error } = useMovieList(api);
+export default function MoviesList({
+  movies,
+  render,
+}: {
+  movies: Movie[];
+  render: (movie: Movie) => JSX.Element;
+}) {
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+  const swiperRef = useRef<SwiperRef>(null);
 
-  if (isLoading) return "Loading...";
-  if (error) return "An error has occurred: " + error;
-  console.log(data.results, "data");
+  useEffect(() => {
+    const swiper = swiperRef.current?.swiper;
+    const intervalId = setInterval(() => {
+      if (swiper) {
+        swiper.slideNext();
+      }
+    }, 3000); // 2 seconds
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
-    <div className="container ">
+    <div className="mx-auto  h-full w-full  ">
       <Swiper
-        effect={"coverflow"}
+        ref={swiperRef}
         grabCursor={true}
         centeredSlides={true}
         loop={true}
         slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 0,
-          depth: 100,
-          modifier: 2.5,
-        }}
         pagination={{ el: ".swiper-pagination", clickable: true }}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
         }}
         modules={[EffectCoverflow, Pagination, Navigation]}
-        className="swiper_container"
+        cssMode={isTouchDevice}
+        className="h-full"
       >
-        {data.results.map((movie: Movie) => {
-          return (
-            <SwiperSlide key={movie.id} className="">
-              <Image movie={movie} />
-            </SwiperSlide>
-          );
-        })}
+        {movies.map(render)}
       </Swiper>
     </div>
   );
