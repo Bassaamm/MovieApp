@@ -57,7 +57,7 @@ function App() {
               />
               <Route
                 path="/bookmark"
-                element={<BookmarkList title={"bookmark"} />}
+                element={<BookmarkList title="bookmark" />}
               />
               <Route path="*" element={<PageNotFound />} />
             </Route>

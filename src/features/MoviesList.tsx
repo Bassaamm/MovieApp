@@ -1,6 +1,14 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useMovieList } from "./useMovieList";
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Movie } from "../types/MovieType";
+import Image from "../components/Image";
+import { Suspense } from "react";
+import { FaBeer } from "react-icons/fa";
 
 export default function MoviesList({ api }: { api: string; title: string }) {
   const { data, isLoading, error } = useMovieList(api);
@@ -10,24 +18,34 @@ export default function MoviesList({ api }: { api: string; title: string }) {
   console.log(data.results, "data");
 
   return (
-    <div className="flex h-full w-full items-center justify-center ">
-      {" "}
+    <div className="container ">
       <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
+        }}
+        pagination={{ el: ".swiper-pagination", clickable: true }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[EffectCoverflow, Pagination, Navigation]}
+        className="swiper_container"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        ...
+        {data.results.map((movie: Movie) => {
+          return (
+            <SwiperSlide key={movie.id} className="">
+              <Image movie={movie} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
