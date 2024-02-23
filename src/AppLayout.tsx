@@ -2,20 +2,14 @@ import { useParams } from "react-router-dom";
 import Header from "./components/Header";
 import MoviesList from "./features/MoviesList";
 import { useMovieList } from "./features/useMovieList";
-import MovieCard from "./components/MovieCard";
 import { Movie } from "./types/MovieType";
 import { getMovieImage, moviesTypes } from "./utils/helpers";
 import { SwiperSlide } from "swiper/react";
 import Image from "./components/Image";
 export default function AppLayout() {
   const params = useParams();
-  console.log(params);
-  let movieType;
-  if (params.api) {
-    movieType = moviesTypes[params.api].api;
-  } else {
-    return "An error has occurred: " + "No movie type found";
-  }
+  let movieType = moviesTypes[params.api!]?.api ?? "Movie not found";
+
   const { data, isLoading, error } = useMovieList(movieType);
 
   if (isLoading) return "Loading...";

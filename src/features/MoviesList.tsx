@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Movie } from "../types/MovieType";
 import { useEffect, useRef } from "react";
-import { FaBeer } from "react-icons/fa";
 
 export default function MoviesList({
   movies,
