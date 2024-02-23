@@ -4,11 +4,9 @@ import { searchMovie } from "../service/MoviedbApi";
 export function useMovieSearch(movieName: string) {
   let movieApi = `search/movie`;
   const { data, isLoading, error } = useQuery({
-    queryKey: [movieApi],
+    queryKey: [movieApi, movieName],
     queryFn: () => searchMovie(movieApi, movieName),
-    staleTime: 0, // 5 minutes in milliseconds
-    cacheTime: 0, // 10 minutes in milliseconds
   });
-  console.log(data);
+
   return { data, isLoading, error };
 }
