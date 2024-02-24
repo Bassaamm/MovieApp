@@ -1,9 +1,10 @@
 import axios from "axios";
-//&query=${querySearch}` for query
-const API_KEY = `api_key=${import.meta.env.VITE_MOVIEDB_KEY}`;
-const url = `https://api.themoviedb.org/3/moivestype?${API_KEY}`;
 
-export async function getMovieList(apiInfo: string) {
-  const res = await axios.get(url.replace("moivestype", apiInfo));
+const API_KEY = `api_key=${import.meta.env.VITE_MOVIEDB_KEY}`;
+const BASE_URL = `https://api.themoviedb.org/3`;
+
+export async function fetchMovieData(endpoint: string, query?: string) {
+  const url = `${BASE_URL}/${endpoint}?${API_KEY}${query ? `&query=${query}` : ""}`;
+  const res = await axios.get(url);
   return res.data;
 }

@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { NavRoutesProps } from "../utils/navRoutes";
 
 export default function NavButton({ route }: { route: NavRoutesProps }) {
   return (
-    <Link to={route.path} className="text-white">
-      {route.name}
-    </Link>
+    <NavLink
+      to={route.path}
+      className=" text-sm font-normal text-slate-900  md:font-semibold lg:text-white"
+    >
+      <span className=""> {route.name}</span>
+    </NavLink>
   );
 }

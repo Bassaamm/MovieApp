@@ -1,33 +1,53 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { useMovieList } from "./useMovieList";
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Swiper, SwiperRef } from "swiper/react";
+import { Navigation, Pagination, EffectCoverflow } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Movie } from "../types/MovieType";
+import { useEffect, useRef } from "react";
 
-export default function MoviesList({ api }: { api: string; title: string }) {
-  const { data, isLoading, error } = useMovieList(api);
+export default function MoviesList({
+  movies,
+  render,
+}: {
+  movies: Movie[];
+  render: (movie: Movie) => JSX.Element;
+}) {
+  const isTouchDevice = window.matchMedia("(hover: none)").matches;
+  const swiperRef = useRef<SwiperRef>(null);
 
-  if (isLoading) return "Loading...";
-  if (error) return "An error has occurred: " + error;
-  console.log(data.results, "data");
+  useEffect(() => {
+    const swiper = swiperRef.current?.swiper;
+    const intervalId = setInterval(() => {
+      if (swiper) {
+        swiper.slideNext();
+      }
+    }, 3000); // 2 seconds
+
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, []);
 
   return (
-    <div className="flex h-full w-full items-center justify-center ">
-      {" "}
+    <div className="mx-auto  h-full w-full  ">
       <Swiper
-        // install Swiper modules
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
-        spaceBetween={50}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        ref={swiperRef}
+        grabCursor={true}
+        centeredSlides={true}
+        loop={true}
+        slidesPerView={"auto"}
+        pagination={{ el: ".swiper-pagination", clickable: true }}
+        navigation={{
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        }}
+        modules={[EffectCoverflow, Pagination, Navigation]}
+        cssMode={isTouchDevice}
+        className="h-full"
       >
-        <SwiperSlide>Slide 1</SwiperSlide>
-        <SwiperSlide>Slide 2</SwiperSlide>
-        <SwiperSlide>Slide 3</SwiperSlide>
-        <SwiperSlide>Slide 4</SwiperSlide>
-        ...
+        {movies.map(render)}
       </Swiper>
     </div>
   );

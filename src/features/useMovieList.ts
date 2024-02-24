@@ -6,5 +6,6 @@ export function useMovieList(api: string) {
     queryKey: [api],
     queryFn: () => getMovieList(api),
   });
+  console.log(data);
   return { data, isLoading, error };
 }

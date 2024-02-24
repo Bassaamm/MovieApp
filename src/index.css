@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --shadow: #eee;
+  --scrollbarBG: #eeeeee;
+  --thumbBG: #2241cf;
+}
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  box-shadow: 0 0 10px 0.5px black;
+}
+.image-wrapper {
+  cursor: pointer !important;
+}
