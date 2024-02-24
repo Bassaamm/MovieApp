@@ -1,9 +1,7 @@
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import PageNotFound from "./components/PageNotFound";
-import Search from "./features/Search";
 import MoviesInfo from "./features/MoviesInfo";
 import AppLayout from "./AppLayout";
-import { Api } from "./enums/Api";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "react-query";
 import BookmarkList from "./features/BookmarkList";
@@ -12,6 +10,7 @@ const queryClinet = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 0,
+      cacheTime: 1000 * 60 * 60 * 24,
     },
   },
 });
@@ -41,7 +40,6 @@ function App() {
               element={<BookmarkList title="bookmark" />}
             />
             <Route path="/movie/:id" element={<MoviesInfo />} />
-            <Route path="search" element={<Search api={Api.SearchMovie} />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

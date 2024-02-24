@@ -1,5 +1,5 @@
 export function getMovieImage(movieUrl: string): string {
-  return `https://image.tmdb.org/t/p/w500${movieUrl}`;
+  return `https://image.tmdb.org/t/p/original${movieUrl}`;
 }
 
 type MoviesTypes = {
@@ -19,3 +19,20 @@ export const moviesTypes: MoviesTypes = {
   search: { api: "search/movie", title: "Search" },
   movieInfo: { api: "movie/:id", title: "Movie info" },
 };
+
+export function shorcutDescription(description: string) {
+  return description.length > 150
+    ? description.slice(0, 150) + "..."
+    : description;
+}
+export function isLangEnglish(sentence: string) {
+  const charCode = sentence.charCodeAt(0);
+  console.log(charCode);
+  if (charCode >= 0x0600 && charCode <= 0x06ff) {
+    return false;
+  } else if (charCode >= 0x0020 && charCode <= 0x007f) {
+    return true;
+  }
+
+  return "unknown";
+}

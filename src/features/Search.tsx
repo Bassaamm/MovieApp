@@ -10,14 +10,15 @@ import MovieSearchCard from "@/components/MovieSearchCard";
 
 export default function Search() {
   const [search, setSearch] = useState("");
+  const [open, setOpen] = useState(false);
   return (
     <div className="flex  items-center  gap-8 ">
-      <Dialog>
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
           <FaSearch className="cursor-pointer text-xl text-white transition hover:text-gray-700" />
         </DialogTrigger>
-        <DialogContent className="  max-w-4xl bg-slate-900 text-white">
-          <div className="mr-10  flex  flex-col gap-4">
+        <DialogContent className=" max-w-3xl  rounded-lg bg-slate-900 text-white">
+          <div className="  flex  flex-col gap-4">
             <label htmlFor="">Movie name </label>
             <input
               type="text"
@@ -26,7 +27,7 @@ export default function Search() {
             />
           </div>
           <div className=" max-h-96  overflow-y-scroll">
-            <MovieSearchCard search={search} />
+            <MovieSearchCard search={search} onOpenChange={setOpen} />
           </div>
 
           <DialogFooter></DialogFooter>

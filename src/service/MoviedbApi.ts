@@ -20,3 +20,13 @@ export async function searchMovie(movieNameApi: string, name: string) {
   const res = await axios.get(movieApi + movieName);
   return res.data;
 }
+export async function movieCredits(movieCreditsApi: string) {
+  let movieApi = url.replace("moviedata", movieCreditsApi);
+  const res = await axios.get(movieApi);
+  return res.data;
+}
+export async function getMovieRec(movieRecApi: string) {
+  let movieApi = url.replace("moviedata", movieRecApi);
+  const res = await axios.get(movieApi);
+  return res.data;
+}
