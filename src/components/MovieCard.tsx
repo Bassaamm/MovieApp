@@ -3,7 +3,7 @@ import { Movie } from "../types/MovieType";
 import { getMovieImage } from "../utils/helpers";
 import Image from "./Image";
 export default function MovieCard({ movie }: { movie: Movie }) {
-  let imgae = getMovieImage(movie.backdrop_path);
+  const imgae = getMovieImage(movie.backdrop_path);
   return (
     <SwiperSlide key={movie.id} className="relative">
       <div

@@ -23,7 +23,7 @@ export default function MoviesInfo() {
     params.id!,
   );
   console.log(data);
-  let year = isLoading ? null : data.release_date.split("-")[0];
+  const year = isLoading ? null : data.release_date.split("-")[0];
   console.log(cast);
   return (
     <div className="h-screen overflow-x-hidden bg-slate-800 font-sans">

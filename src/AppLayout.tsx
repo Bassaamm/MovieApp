@@ -9,7 +9,7 @@ import Image from "./components/Image";
 import LoadingSpinner from "./components/LoadingSpinner";
 export default function AppLayout() {
   const params = useParams();
-  let movieType = moviesTypes[params.api!]?.api ?? "Movie not found";
+  const movieType = moviesTypes[params.api!]?.api ?? "Movie not found";
 
   const { data, isLoading } = useMovieList(movieType);
   const navigate = useNavigate();
