@@ -1,4 +1,4 @@
-## Link ---> [Here](https://basssam.me/](https://movieaa.netlify.app/) .
+## Link ---> [Here](https://movieaa.netlify.app/) .
 
 ## What is it ?
 
